@@ -311,7 +311,9 @@ function install_prepare_software_on_centos()
         sudo dnf install -y epel-release
         sudo dnf install -y vim ctags automake gcc gcc-c++ kernel-devel make cmake python2 python2-devel python3-devel fontconfig ack git
     else
-        sudo yum install -y ctags automake gcc gcc-c++ kernel-devel cmake python-devel python3-devel fontconfig ack git
+        sudo yum groupinstall "Development Tools" # Development Tools 组包含了常用的编译器和构建工具
+        sudo yum install -y ctags automake gcc gcc-c++ kernel-devel cmake fontconfig ack git
+        sudo yum install -y python-devel python3-devel
         compile_vim_on_centos
     fi
 }
